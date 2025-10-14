@@ -50,6 +50,26 @@ For the implementation of a single class,
 record the Type and specific content of this class in YRpp,
 and at the same time, use a Type_Impl to contain the implementation.
 
+## 使用/USAGE
+
+把这个项目编译成DLL，或下载Release当中的DLL。
+把DLL放在游戏目录下，同时保证没有任何其他的引擎扩展。
+（包括Ares/Phobos/Kratos/DynamicPatcher/SIWinterIsComing等）
+之后使用Syringe启动即可。
+
+Compile this project into a DLL, or download the DLL from the Release page.
+Place the DLL in the game directory,
+ensuring that there are no other engine extensions.
+(This includes Ares/Phobos/Kratos/DynamicPatcher/SIWinterIsComing, etc.)
+Then use Syringe to launch the game.
+
+当然，也可以仅仅拿来参考，或者用来作为自己扩展的基础。
+这个项目的内容是开源的，遵循MIT协议。
+
+Of course, it can also be used for reference only,
+or as a basis for your own extensions.
+The content of this project is open source and follows the MIT license.
+
 ## 补充/ADDITION
 
 这个项目的目的不是完整逆向YR，而只是记录较为重要的函数与实现。
@@ -61,3 +81,13 @@ but only to document the more important functions and implementations.
 If you are interested, you can try to supplement more functions.
 This project also hopes that 
 everyone can gradually understand how the entire engine works.
+
+这个项目可以修正WW的原有BUG，但请注明WW原来是怎么写的。
+如果有意愿的话，也可以标注出Ares/Phobos等钩了什么位置以及改变了什么。
+不考虑提供任何的新增或增强逻辑。
+
+This project can fix the original bugs of WW, 
+but please indicate how WW was originally written.
+If you are willing, you can also indicate what positions 
+Ares/Phobos, etc. hooked and what changes they made.
+No new or enhanced logic is considered.
