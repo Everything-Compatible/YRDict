@@ -1,45 +1,41 @@
-/**
-*  yrpp-spawner
-*
-*  Copyright(C) 2022-present CnCNet
-*
-*  This program is free software: you can redistribute it and/or modify
-*  it under the terms of the GNU General Public License as published by
-*  the Free Software Foundation, either version 3 of the License, or
-*  (at your option) any later version.
-*
-*  This program is distributed in the hope that it will be useful,
-*  but WITHOUT ANY WARRANTY; without even the implied warranty of
-*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-*  GNU General Public License for more details.
-*
-*  You should have received a copy of the GNU General Public License
-*  along with this program.If not, see <http://www.gnu.org/licenses/>.
-*/
-
-#pragma once
+﻿#pragma once
 #include <Windows.h>
+#include <string>
+#include <format>
 
-class Debug
+namespace Debug
 {
-public:
-	enum class ExitCode : int
-	{
-		Undefined = -1,
-		SLFail = 114514
-	};
+	void Log(const char* pFormat, ...);
+	void LogAndMessage(const char* pFormat, ...);
+	void LogString(const char* pStr);
+	void LogString(const std::string& Str);
+	void MessageString(const char* pStr);
+	void MessageString(const std::string& Str);
+	void LogAndMessageString(const char* pStr);
+	void LogAndMessageString(const std::string& Str);
 
-	static char StringBuffer[0x1000];
-
-	static void Log(const char* pFormat, ...);
-	static void LogAndMessage(const char* pFormat, ...);
-	static void LogWithVArgs(const char* pFormat, va_list args);
-	static void INIParseFailed(const char* section, const char* flag, const char* value, const char* Message = nullptr);
-	static void FatalErrorAndExit(const char* pFormat, ...);
-	static void FatalErrorAndExit(ExitCode nExitCode, const char* pFormat, ...);
-};
-
-
-#define IH_ENTER_FN_LOG(fn,ext) (Debug::Log("IHCore : Enter hook " #fn " at 0x%08X, Ext call " #ext " at 0x%08X \n",fn,ext)) 
-
-#define IH_EXIT_FN_LOG(fn,ext) (Debug::Log("IHCore : Exit hook " #fn " at 0x%08X, Ext call " #ext " at 0x%08X \n",fn,ext)) 
+	void LogFormat(const std::string& fmt, auto&&... args) {
+		std::string msg = std::format(fmt, std::forward<decltype(args)>(args)...);
+		LogString(msg);
+	}
+	void LogVFormat(const std::string& fmt, std::format_args args) {
+		std::string msg = std::vformat(fmt, args);
+		LogString(msg);
+	}
+	void MessageFormat(const std::string& fmt, auto&&... args) {
+		std::string msg = std::format(fmt, std::forward<decltype(args)>(args)...);
+		MessageString(msg);
+	}
+	void MessageVFormat(const std::string& fmt, std::format_args args) {
+		std::string msg = std::vformat(fmt, args);
+		MessageString(msg);
+	}
+	void LogFormatAndMessage(const std::string& fmt, auto&&... args) {
+		std::string msg = std::format(fmt, std::forward<decltype(args)>(args)...);
+		LogAndMessageString(msg);
+	}
+	void LogVFormatAndMessage(const std::string& fmt, std::format_args args) {
+		std::string msg = std::vformat(fmt, args);
+		LogAndMessageString(msg);
+	}
+}
