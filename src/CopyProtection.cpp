@@ -20,7 +20,6 @@ DEFINE_HOOK(0x479110, CD_NeverAsk, 5)
 
 DEFINE_HOOK(0x49F5C0, CopyProtection_IsLauncherRunning, 8)
 {
-	MessageBoxW(NULL, L"Hello World From YRDict!", L"YRDict", MB_OK);
 	R->AL(1);
 	return 0x49F61A;
 }
