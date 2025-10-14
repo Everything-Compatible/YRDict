@@ -19,13 +19,13 @@
     <Filter Include="Dict">
       <UniqueIdentifier>{f8b14938-90b5-4e3a-ab05-8f2aab8f3557}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Main">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
     <Filter Include="Resources">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Utilities">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -1025,10 +1025,13 @@
     <ClInclude Include="src\ImplBase.h">
       <Filter>Dict</Filter>
     </ClInclude>
+    <ClInclude Include="src\Version.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
-      <Filter>Main</Filter>
+      <Filter>Utilities</Filter>
     </ClCompile>
     <ClCompile Include="YRpp\StaticInits.cpp">
       <Filter>YRpp</Filter>
@@ -1043,7 +1046,10 @@
       <Filter>Dict</Filter>
     </ClCompile>
     <ClCompile Include="src\CopyProtection.cpp">
-      <Filter>Main</Filter>
+      <Filter>Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="src\VersionMark.cpp">
+      <Filter>Utilities</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

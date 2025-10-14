@@ -153,6 +153,7 @@
     <ClInclude Include="Patch\Patch.h" />
     <ClInclude Include="src\FileClass_Impl.h" />
     <ClInclude Include="src\ImplBase.h" />
+    <ClInclude Include="src\Version.h" />
     <ClInclude Include="YRpp\AbstractClass.h" />
     <ClInclude Include="YRpp\AbstractTypeClass.h" />
     <ClInclude Include="YRpp\AircraftClass.h" />
@@ -487,6 +488,7 @@
     <ClCompile Include="Patch\Patch.cpp" />
     <ClCompile Include="src\FileClass_Impl.cpp" />
     <ClCompile Include="src\CopyProtection.cpp" />
+    <ClCompile Include="src\VersionMark.cpp" />
     <ClCompile Include="YRpp\StaticInits.cpp" />
   </ItemGroup>
   <ItemGroup>
