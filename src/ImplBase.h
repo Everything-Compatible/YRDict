@@ -1,6 +1,6 @@
 ﻿#pragma once
 #include <GeneralDefinitions.h>
-#include <Patch.h>
+#include <DynamicPatch.h>
 #include <unordered_map>
 #include <Memory.h>
 
@@ -84,7 +84,7 @@ namespace _ClassName##_Impl_Namespace { \
 } 
 
 #define IMPLEMENT(Addr, Method) \
-	Patch::Apply_LJMP(Addr, union_cast<void*>(&Method));
+	CodeModifier::InsertFarJump(Addr, union_cast<void*>(&Method));
 #define DEFINE_IMPLEMENT \
 	static void Implement()
 
