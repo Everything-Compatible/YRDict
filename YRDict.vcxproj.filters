@@ -686,9 +686,6 @@
     <ClInclude Include="Patch\Debug.h">
       <Filter>Patch</Filter>
     </ClInclude>
-    <ClInclude Include="Patch\Patch.h">
-      <Filter>Patch</Filter>
-    </ClInclude>
     <ClInclude Include="YRpp\Blitters\BlitPlainXlat.h">
       <Filter>YRpp\Blitters</Filter>
     </ClInclude>
@@ -1025,6 +1022,9 @@
     <ClInclude Include="src\Version.h">
       <Filter>Utilities</Filter>
     </ClInclude>
+    <ClInclude Include="Patch\DynamicPatch.h">
+      <Filter>Patch</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -1036,9 +1036,6 @@
     <ClCompile Include="Patch\Debug.cpp">
       <Filter>Patch</Filter>
     </ClCompile>
-    <ClCompile Include="Patch\Patch.cpp">
-      <Filter>Patch</Filter>
-    </ClCompile>
     <ClCompile Include="src\FileClass_Impl.cpp">
       <Filter>Dict</Filter>
     </ClCompile>
@@ -1047,6 +1044,9 @@
     </ClCompile>
     <ClCompile Include="src\VersionMark.cpp">
       <Filter>Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="Patch\DynamicPatch.cpp">
+      <Filter>Patch</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

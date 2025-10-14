@@ -149,7 +149,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Patch\Debug.h" />
-    <ClInclude Include="Patch\Patch.h" />
+    <ClInclude Include="Patch\DynamicPatch.h" />
     <ClInclude Include="src\FileClass_Impl.h" />
     <ClInclude Include="src\ImplBase.h" />
     <ClInclude Include="src\Version.h" />
@@ -484,7 +484,7 @@
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="Patch\Debug.cpp" />
-    <ClCompile Include="Patch\Patch.cpp" />
+    <ClCompile Include="Patch\DynamicPatch.cpp" />
     <ClCompile Include="src\FileClass_Impl.cpp" />
     <ClCompile Include="src\CopyProtection.cpp" />
     <ClCompile Include="src\VersionMark.cpp" />
