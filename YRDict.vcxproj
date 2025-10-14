@@ -149,7 +149,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Patch\Debug.h" />
-    <ClInclude Include="Patch\Macro.h" />
     <ClInclude Include="Patch\Patch.h" />
     <ClInclude Include="src\FileClass_Impl.h" />
     <ClInclude Include="src\ImplBase.h" />

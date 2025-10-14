@@ -686,9 +686,6 @@
     <ClInclude Include="Patch\Debug.h">
       <Filter>Patch</Filter>
     </ClInclude>
-    <ClInclude Include="Patch\Macro.h">
-      <Filter>Patch</Filter>
-    </ClInclude>
     <ClInclude Include="Patch\Patch.h">
       <Filter>Patch</Filter>
     </ClInclude>
