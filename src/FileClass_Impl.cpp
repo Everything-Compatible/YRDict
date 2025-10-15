@@ -1,52 +1,20 @@
 ﻿#include "FileClass_Impl.h"
+#include <Unsorted.h>
 
-void RawFileClass_Impl::DTOR()
+//------------------------------------------
+//--------------FileClass_Impl--------------
+//------------------------------------------
+void* FileClass_Impl::ReadWholeFile()
 {
-	reset_vtable();
-	if (This->HasHandle())
-	{
-		if (!CloseHandle(This->Handle))
-		{
-			This->CDCheck(GetLastError(), 0, This->FileName);
-		}
-		This->Handle = INVALID_HANDLE_VALUE;
-	}
-	if (This->FileNameAllocated && This->FileName)
-	{
-		CRT::free(This->FileName);
-		This->FileName = nullptr;
-		This->FileNameAllocated = false;
-	}
-	BASE_CLASS_DTOR(FileClass);
-}
+	void* FileBuffer = nullptr;
+	int szFileSize;
 
-
-const char* RawFileClass_Impl::SetFileName(const char* pFileName)
-{
-	const char* result;
-
-	if (This->FileName && This->FileNameAllocated)
+	if (This->Exists(false))
 	{
-		CRT::free(This->FileName);
-		This->FileName = nullptr;
-		This->FileNameAllocated = false;
+		szFileSize = This->GetFileSize();
+		FileBuffer = YRMemory::Allocate(szFileSize);
+		if (FileBuffer)
+			This->ReadBytes(FileBuffer, szFileSize);
 	}
-
-	if (!pFileName)
-		return 0;
-
-	This->FilePointer = 0;
-	This->FileSize = INVALID_FILE_SIZE;
-	result = CRT::strdup(pFileName);
-	This->FileName = result;
-	if (result)
-	{
-		This->FileNameAllocated = true;
-	}
-	else
-	{
-		This->CDCheck(ERROR_INVALID_ACCESS, 0, pFileName);
-		result = 0;
-	}
-	return result;
+	return FileBuffer;
 }
