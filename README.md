@@ -102,6 +102,7 @@ The content of this project is open source and follows the MIT license.
 这个项目可以修正WW的原有BUG，但请注明WW原来是怎么写的。
 如果有意愿的话，也可以标注出Ares/Phobos等钩了什么位置以及改变了什么。
 不考虑提供任何的新增或增强逻辑。
+允许也欢迎添加与调试等相关的辅助功能。
 
 
 Please note that this project does not aim to fully reverse engineer YR. 
@@ -115,6 +116,7 @@ but please indicate how WW was originally written.
 If you are willing, you can also indicate what positions 
 Ares/Phobos, etc. hooked and what changes they made.
 No new or enhanced logic is considered.
+Adding auxiliary features related to debugging and similar tasks is allowed and encouraged.
 
 ## 结语/CONCLUSION
 
