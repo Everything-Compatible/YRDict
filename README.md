@@ -106,8 +106,6 @@ The content of this project is open source and follows the MIT license.
 
 所有源文件和说明文件应统一编码为 UTF8 带BOM格式。
 
-所有源文件和说明文件应统一编码为 UTF8 带BOM格式。
-
 所有人注意不要直接提交到main分支。
 可以申请加入，并在dev分支上直接开发与提交；
 也可以fork本项目，并在自己的分支当中添加内容。
