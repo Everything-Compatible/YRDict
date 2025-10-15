@@ -30,7 +30,7 @@
 *.exe
 *.out
 *.app
-/.vs/YRDict
+/.vs
 /YRDict/Release
 /YRDict/x64/Debug
 /Release
