@@ -1,4 +1,4 @@
-name: Pull Request Check
+﻿name: Pull Request Check
 
 on:
   pull_request:
@@ -20,6 +20,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v5
+      - with:
+          fetch-depth: 0
       - name: Check that Changelog has been updated
         run: |
           # Check that Changelog has been updated
