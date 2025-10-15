@@ -1048,6 +1048,9 @@
     <ClCompile Include="Patch\DynamicPatch.cpp">
       <Filter>Patch</Filter>
     </ClCompile>
+    <ClCompile Include="src\RawFileClass_Impl.cpp">
+      <Filter>Dict</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="YRpp\README.md">
@@ -1060,6 +1063,9 @@
       <Filter>Resources</Filter>
     </None>
     <None Include="CHANGELOG.md">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include=".gitignore">
       <Filter>Resources</Filter>
     </None>
   </ItemGroup>

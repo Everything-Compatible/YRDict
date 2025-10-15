@@ -426,10 +426,12 @@
     <ClCompile Include="Patch\DynamicPatch.cpp" />
     <ClCompile Include="src\FileClass_Impl.cpp" />
     <ClCompile Include="src\CopyProtection.cpp" />
+    <ClCompile Include="src\RawFileClass_Impl.cpp" />
     <ClCompile Include="src\VersionMark.cpp" />
     <ClCompile Include="YRpp\StaticInits.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include=".gitignore" />
     <None Include="CHANGELOG.md" />
     <None Include="README.md">
       <SubType>
