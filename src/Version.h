@@ -17,13 +17,13 @@ COPIED FROM PHOBOS
 // Indicates project maturity and completeness
 #define VERSION_MAJOR 0
 
-// Indicates major changes and significant additions, like new logics
+// Indicates major changes and significant additions, like framework overhauls
 #define VERSION_MINOR 0
 
-// Indicates minor changes, like vanilla bugfixes, unhardcodings or hacks
+// Indicates minor changes, like new implementation and insights.
 #define VERSION_REVISION 0
 
-// Indicates Phobos-related bugfixes only
+// Indicates very minor changes and insignificant additions.
 #define VERSION_PATCH 0
 
 #pragma endregion
