@@ -1059,5 +1059,8 @@
     <None Include="README.md">
       <Filter>Resources</Filter>
     </None>
+    <None Include="CHANGELOG.md">
+      <Filter>Resources</Filter>
+    </None>
   </ItemGroup>
 </Project>

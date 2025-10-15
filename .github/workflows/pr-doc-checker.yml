@@ -1,0 +1,34 @@
+name: Pull Request Check
+
+on:
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - labeled
+      - unlabeled
+env:
+  BASE_REF: ${{ github.event.pull_request.base.sha }}
+
+jobs:
+  Changelog-Check:
+    name: Changelog Mention
+    # If the Minor label is set, then workflow will not be executed
+    if: false == contains(github.event.pull_request.labels.*.name, 'Minor')
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Check that Changelog has been updated
+        run: |
+          # Check that Changelog has been updated
+          if ! git diff --quiet $(git merge-base $BASE_REF HEAD) -- "CHANGELOG.md";
+          then
+            echo "Thank you for updating the changelog! 🎉"
+            exit 0
+          else
+            echo "Error: Please update the CHANGELOG.md to include a brief summary of your changes."
+            echo "Please append a new section to CHANGELOG.md with the date and a summary of changes."
+            exit 1
+          fi

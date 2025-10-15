@@ -1,0 +1,65 @@
+title: "Your impl or insight title here"
+labels: ["Implementation/Insight"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        > **Warning**
+        > Before posting a suggestion, please read the **checklist at the bottom**.
+
+        Thanks for taking the time to submit out this implementation or insight!
+
+        Please make sure you follow these instructions and fill in every question with as much detail as possible.
+
+        > **Note**
+        > Implementation or insight should have clear comments.
+        > New or enhanced features are not considered (commit it to extensions like Phobos)
+        > Vanilla bugfixes **MUST** be accompanied with the vanilla implementation.
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: |
+        Write down the type of your issues : Implementation / Partial Implementation / Insight / Vanilla Bugfix
+        Write a detailed description of your ideas and how it should function.
+        Please include any relevant code snippets or examples to illustrate your points.
+    validations:
+      required: true
+
+  - type: textarea
+    id: usage
+    attributes:
+      label: Usage
+      description: The common usage of your content.
+      value: |
+        Type : Implementation / Partial Implementation / Insight / Vanilla Bugfix
+        Target Function : Function Name
+        Address : Function Address (Optional but recommended)
+        Usage : How to use it, how it works, what it does.
+    validations:
+      required: false
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: |
+        Attach additional files or links to content related to the feature report here (example images, gifs, videos to illustrate the suggestion etc).
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checklist
+      description: Please read and ensure you followed all the following options.
+      options:
+        - label: The suggestion is **NOT** a new or enhanced feature.
+          required: true
+        - label: The suggestion is **NOT** a duplicate of an existing topic.
+          required: true
+        - label: I agree to elaborate the details if requested and provide thorough testing if there's implementation.
+          required: true
+        - label: I added a very descriptive title to this topic.
+          required: true
+        - label: I am sure the description / code is clear and correct and I used proper formatting.
+          required: true

@@ -1,0 +1,35 @@
+﻿
+# 更新日志/CHANGELOG
+
+## 注意/NOTE
+
+每条更新需要：
+- 注明目标的类型/函数。
+- 注明贡献时间，类型，贡献者。
+- 记录所用语言不限，但务必语句通顺，内容完整。
+- 如果方便的话可以使用多种语言记录正文。
+
+更新情况记录：
+- 贡献时间：YYYY-MM-DD
+- 类型：Full Impl(完全实现)/Partial Impl(部分实现)/Insight(个人想法&注解)
+- 贡献者：GitHub ID
+
+
+
+For each update, please specify:
+- The type/function targeted.
+- The date, type, and contributor.
+- The language used is not restricted, but please ensure the sentences are coherent and the content is complete.
+- If possible, you can document in multiple languages.
+
+Update records:
+- Contribution Date: YYYY-MM-DD
+- Type: Full Impl/Partial Impl/Insight
+- Contributor: GitHub ID
+
+
+## FileClass_Impl
+#### 2025-10-15 IronHammer_Std
+- 完成 FileClass_Impl 的初步整理。
+
+- Initial organization of FileClass_Impl completed.
