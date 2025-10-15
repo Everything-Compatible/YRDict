@@ -25,6 +25,7 @@ YRDict 以函数为单位进行整理。
 如果没有完整的实现，也记录下来部分函数，其余部分用IDA产出的代码暂时补充。
 如果不能够稳定工作，也可以记录下来，但暂时不钩原函数。
 如果有一点点的心得和注意事项，也烦请留下。
+无论有什么进展，请在CHANGELOG.md当中标明。
 
 这个仓库容纳的不仅仅是代码，“能用的实现”“整理的代码片段”“单纯的心得”都欢迎。
 不要拘泥于形式，能帮助到后人就好。
@@ -47,6 +48,7 @@ with missing portions temporarily supplemented by IDA-generated code.
 If it cannot work stably, it can also be documented,
 but the original function is not hooked for the time being.
 If there are any insights or precautions, please leave them as well.
+Whatever progress you make, please specify it in CHANGELOG.md.
 
 This repository accommodates not only code,
 but also "usable implementations", "organized code snippets", and "pure insights" are all welcome.
