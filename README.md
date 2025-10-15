@@ -103,6 +103,12 @@ The content of this project is open source and follows the MIT license.
 如果有意愿的话，也可以标注出Ares/Phobos等钩了什么位置以及改变了什么。
 不考虑提供任何的新增或增强逻辑。
 
+所有源文件和说明文件应统一编码为 UTF8 带BOM格式。
+
+所有人注意不要直接提交到main分支。
+可以申请加入，并在dev分支上直接开发与提交；
+也可以fork本项目，并在自己的分支当中添加内容。
+以上两种方式都应通过Pull Request的方式合并到main分支。
 
 Please note that this project does not aim to fully reverse engineer YR. 
 Instead, it focuses on documenting critical functions and implementations.
@@ -115,6 +121,15 @@ but please indicate how WW was originally written.
 If you are willing, you can also indicate what positions 
 Ares/Phobos, etc. hooked and what changes they made.
 No new or enhanced logic is considered.
+Adding auxiliary features related to debugging and similar tasks is allowed and encouraged.
+
+All source files and documentation files 
+should be uniformly encoded in **UTF-8 with BOM** format.
+
+Everyone, please avoid committing directly to the main branch.
+You can apply to join and develop and commit directly on the dev branch;
+or you can fork this project and add content in your own branch.
+Both methods should merge into the main branch via Pull Request.
 
 ## 结语/CONCLUSION
 

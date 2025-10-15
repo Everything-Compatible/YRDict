@@ -1,19 +1,19 @@
-#pragma once
+ï»¿#pragma once
 #include <windows.h>
 #include <initializer_list>
 #include <cstring>
 #include <memory>
 
-// Ê¹ÓÃ¸ü¶ÀÌØµÄ½ÚÇøÃû³Æ£¬±ÜÃâ³åÍ»
+// ä½¿ç”¨æ›´ç‹¬ç‰¹çš„èŠ‚åŒºåç§°ï¼Œé¿å…å†²çª
 #define CODE_PATCH_SECTION ".codepatch"
 #pragma section(CODE_PATCH_SECTION, read, execute)
 
-// Ö¸Áî½á¹¹Ìå
+// æŒ‡ä»¤ç»“æ„ä½“
 #pragma pack(push, 1)
 struct FarJumpInstruction
 {
     BYTE opcode;        // 0xE9 for near jump, 0xEA for far jump
-    DWORD offset;       // Ìø×ªÆ«ÒÆÁ¿
+    DWORD offset;       // è·³è½¬åç§»é‡
 
     FarJumpInstruction(DWORD from, DWORD to)
     {
@@ -25,7 +25,7 @@ struct FarJumpInstruction
 struct NearCallInstruction
 {
     BYTE opcode;        // 0xE8
-    DWORD offset;       // µ÷ÓÃÆ«ÒÆÁ¿
+    DWORD offset;       // è°ƒç”¨åç§»é‡
 
     NearCallInstruction(DWORD from, DWORD to)
     {
@@ -36,18 +36,18 @@ struct NearCallInstruction
 
 struct ExtendedCallInstruction
 {
-    WORD prefix;        // ÌØÊâµ÷ÓÃÇ°×º
-    DWORD offset;       // µ÷ÓÃÆ«ÒÆÁ¿
+    WORD prefix;        // ç‰¹æ®Šè°ƒç”¨å‰ç¼€
+    DWORD offset;       // è°ƒç”¨åç§»é‡
 
     ExtendedCallInstruction(DWORD from, DWORD to)
     {
-        prefix = 0x15FF; // FF15 ²Ù×÷Âë
+        prefix = 0x15FF; // FF15 æ“ä½œç 
         offset = to;
     }
 };
 #pragma pack(pop)
 
-// ÄÚ´æ±£»¤·â×°Àà
+// å†…å­˜ä¿æŠ¤å°è£…ç±»
 class MemoryGuard
 {
 private:
@@ -73,19 +73,19 @@ public:
         }
     }
 
-    // ½ûÓÃ¸´ÖÆ
+    // ç¦ç”¨å¤åˆ¶
     MemoryGuard(const MemoryGuard&) = delete;
     MemoryGuard& operator=(const MemoryGuard&) = delete;
 };
 
-// ½ÚÇøĞÅÏ¢½á¹¹
+// èŠ‚åŒºä¿¡æ¯ç»“æ„
 struct SectionInfo
 {
     void* virtualAddress;
     size_t virtualSize;
 };
 
-// Ö÷²¹¶¡Àà
+// ä¸»è¡¥ä¸ç±»
 #pragma pack(push, 1)
 class CodeModifier
 {
@@ -95,14 +95,14 @@ private:
     const BYTE* m_patchData;
 
 public:
-    // Ä¬ÈÏ¹¹Ôìº¯Êı
+    // é»˜è®¤æ„é€ å‡½æ•°
     CodeModifier() : m_targetOffset(0), m_dataSize(0), m_patchData(nullptr) {}
 
-    // ²ÎÊı»¯¹¹Ôìº¯Êı
+    // å‚æ•°åŒ–æ„é€ å‡½æ•°
     CodeModifier(DWORD offset, DWORD size, const BYTE* data)
         : m_targetOffset(offset), m_dataSize(size), m_patchData(data) {}
 
-    // Ó¦ÓÃ²¹¶¡µ½ÄÚ´æ
+    // åº”ç”¨è¡¥ä¸åˆ°å†…å­˜
     void Execute() const
     {
         if (m_targetOffset == 0 || m_dataSize == 0 || m_patchData == nullptr) {
@@ -111,17 +111,17 @@ public:
 
         void* targetAddress = reinterpret_cast<void*>(m_targetOffset);
 
-        // Ê¹ÓÃRAIIÄ£Ê½¹ÜÀíÄÚ´æ±£»¤
+        // ä½¿ç”¨RAIIæ¨¡å¼ç®¡ç†å†…å­˜ä¿æŠ¤
         MemoryGuard guard(targetAddress, m_dataSize);
 
-        // °²È«µØ¸´ÖÆÊı¾İ
+        // å®‰å…¨åœ°å¤åˆ¶æ•°æ®
         std::memcpy(targetAddress, m_patchData, m_dataSize);
     }
 
-    // ¾²Ì¬·½·¨¼¯
+    // é™æ€æ–¹æ³•é›†
     static void ExecuteAllStored();
 
-    // ÀàĞÍ»¯Êı¾İ²¹¶¡
+    // ç±»å‹åŒ–æ•°æ®è¡¥ä¸
     template <typename DataType>
     static void ModifyWithData(DWORD offset, std::initializer_list<DataType> dataPattern)
     {
@@ -133,7 +133,7 @@ public:
         modifier.Execute();
     }
 
-    // Ô­Ê¼×Ö½Ú²¹¶¡£¨Êı×é°æ±¾£©
+    // åŸå§‹å­—èŠ‚è¡¥ä¸ï¼ˆæ•°ç»„ç‰ˆæœ¬ï¼‰
     template <size_t ArraySize>
     static void ModifyRawBytes(DWORD offset, const BYTE(&byteArray)[ArraySize])
     {
@@ -141,41 +141,41 @@ public:
         modifier.Execute();
     }
 
-    // Ô­Ê¼×Ö½Ú²¹¶¡£¨³õÊ¼»¯ÁĞ±í°æ±¾£©
+    // åŸå§‹å­—èŠ‚è¡¥ä¸ï¼ˆåˆå§‹åŒ–åˆ—è¡¨ç‰ˆæœ¬ï¼‰
     static void ModifyRawBytes(DWORD offset, std::initializer_list<BYTE> byteData)
     {
         ModifyWithData<BYTE>(offset, byteData);
     }
 
-    // Ô­Ê¼×Ö½Ú²¹¶¡£¨Ö¸Õë+³¤¶È°æ±¾£©
+    // åŸå§‹å­—èŠ‚è¡¥ä¸ï¼ˆæŒ‡é’ˆ+é•¿åº¦ç‰ˆæœ¬ï¼‰
     static void ModifyRawBytes(DWORD offset, const BYTE* dataPtr, size_t dataLength)
     {
         CodeModifier modifier(offset, static_cast<DWORD>(dataLength), dataPtr);
         modifier.Execute();
     }
 
-    // Ô¶Ìø×ª²¹¶¡
+    // è¿œè·³è½¬è¡¥ä¸
     static void InsertFarJump(DWORD offset, DWORD jumpTarget);
     static void InsertFarJump(DWORD offset, void* jumpTarget)
     {
         InsertFarJump(offset, reinterpret_cast<DWORD>(jumpTarget));
     }
 
-    // ½üµ÷ÓÃ²¹¶¡
+    // è¿‘è°ƒç”¨è¡¥ä¸
     static void InsertNearCall(DWORD offset, DWORD callTarget);
     static void InsertNearCall(DWORD offset, void* callTarget)
     {
         InsertNearCall(offset, reinterpret_cast<DWORD>(callTarget));
     }
 
-    // 6×Ö½Úµ÷ÓÃ²¹¶¡£¨ÌØÊâ¸ñÊ½£©
+    // 6å­—èŠ‚è°ƒç”¨è¡¥ä¸ï¼ˆç‰¹æ®Šæ ¼å¼ï¼‰
     static void InsertExtendedCall(DWORD offset, DWORD callTarget);
     static void InsertExtendedCall(DWORD offset, void* callTarget)
     {
         InsertExtendedCall(offset, reinterpret_cast<DWORD>(callTarget));
     }
 
-    // Ğéº¯Êı±íĞŞ²¹
+    // è™šå‡½æ•°è¡¨ä¿®è¡¥
     static void UpdateVTableEntry(DWORD vtableOffset, DWORD newFunction);
     static void UpdateVTableEntry(DWORD vtableOffset, void* newFunction)
     {
@@ -200,7 +200,7 @@ public:
         UpdateVTableEntry(vtableOffset, GetMemberFunctionAddress(memberFunc));
     }
 
-    // Æ«ÒÆÁ¿ĞŞ²¹£¨±ğÃû£©
+    // åç§»é‡ä¿®è¡¥ï¼ˆåˆ«åï¼‰
     static void ModifyPointer(DWORD offset, DWORD newValue)
     {
         UpdateVTableEntry(offset, newValue);
@@ -212,5 +212,5 @@ public:
 };
 #pragma pack(pop)
 
-// ½ÚÇøÉ¨Ãèº¯ÊıÉùÃ÷
+// èŠ‚åŒºæ‰«æå‡½æ•°å£°æ˜
 bool LocateExecutableSection(const char* sectionName, SectionInfo* result);
