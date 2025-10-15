@@ -1,10 +1,10 @@
-#include "DynamicPatch.h"
+ï»¿#include "DynamicPatch.h"
 #include <imagehlp.h>
 #include <cstring>
 
 #pragma comment(lib, "imagehlp.lib")
 
-// ½ÚÇøÉ¨Ãè¹¤¾ß
+// èŠ‚åŒºæ‰«æå·¥å…·
 bool LocateExecutableSection(const char* sectionName, SectionInfo* result)
 {
     HMODULE moduleBase = GetModuleHandle(nullptr);
@@ -44,7 +44,7 @@ bool LocateExecutableSection(const char* sectionName, SectionInfo* result)
     return false;
 }
 
-// Ö´ĞĞËùÓĞ´æ´¢µÄ²¹¶¡
+// æ‰§è¡Œæ‰€æœ‰å­˜å‚¨çš„è¡¥ä¸
 void CodeModifier::ExecuteAllStored()
 {
     SectionInfo section;
@@ -59,22 +59,22 @@ void CodeModifier::ExecuteAllStored()
     {
         const CodeModifier* modifier = reinterpret_cast<const CodeModifier*>(current);
 
-        // ÖÕÖ¹Ìõ¼ş£º¿ÕÆ«ÒÆÁ¿
+        // ç»ˆæ­¢æ¡ä»¶ï¼šç©ºåç§»é‡
         if (modifier->m_targetOffset == 0) {
             break;
         }
 
-        // ÑéÖ¤Êı¾İÓĞĞ§ĞÔ
+        // éªŒè¯æ•°æ®æœ‰æ•ˆæ€§
         if (modifier->m_dataSize > 0 && modifier->m_patchData != nullptr) {
             modifier->Execute();
         }
 
-        // ÒÆ¶¯µ½ÏÂÒ»¸ö²¹¶¡
+        // ç§»åŠ¨åˆ°ä¸‹ä¸€ä¸ªè¡¥ä¸
         current += sizeof(CodeModifier);
     }
 }
 
-// Ìø×ªºÍµ÷ÓÃ²¹¶¡ÊµÏÖ
+// è·³è½¬å’Œè°ƒç”¨è¡¥ä¸å®ç°
 void CodeModifier::InsertFarJump(DWORD offset, DWORD target)
 {
     FarJumpInstruction instruction(offset, target);
