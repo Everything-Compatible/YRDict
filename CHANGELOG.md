@@ -29,7 +29,15 @@ Update records:
 
 
 ## FileClass_Impl
-#### 2025-10-15 IronHammer_Std
+#### 2025-10-14 IronHammer_Std
 - 完成 FileClass_Impl 的初步整理。
 
 - Initial organization of FileClass_Impl completed.
+
+## RawFileClass_Impl
+#### 2025-10-15 IronHammer_Std
+- 完成 RawFileClass_Impl 的初步整理。
+- 经测试能够正常工作。
+
+- Initial organization of RawFileClass_Impl completed.
+- Tested and confirmed to work correctly.
