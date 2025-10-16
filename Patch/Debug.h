@@ -14,27 +14,27 @@ namespace Debug
 	void LogAndMessageString(const char* pStr);
 	void LogAndMessageString(const std::string& Str);
 
-	void LogFormat(const std::string& fmt, auto&&... args) {
+	inline void LogFormat(const std::string& fmt, auto&&... args) {
 		std::string msg = std::format(fmt, std::forward<decltype(args)>(args)...);
 		LogString(msg);
 	}
-	void LogVFormat(const std::string& fmt, std::format_args args) {
+	inline void LogVFormat(const std::string& fmt, std::format_args args) {
 		std::string msg = std::vformat(fmt, args);
 		LogString(msg);
 	}
-	void MessageFormat(const std::string& fmt, auto&&... args) {
+	inline void MessageFormat(const std::string& fmt, auto&&... args) {
 		std::string msg = std::format(fmt, std::forward<decltype(args)>(args)...);
 		MessageString(msg);
 	}
-	void MessageVFormat(const std::string& fmt, std::format_args args) {
+	inline void MessageVFormat(const std::string& fmt, std::format_args args) {
 		std::string msg = std::vformat(fmt, args);
 		MessageString(msg);
 	}
-	void LogFormatAndMessage(const std::string& fmt, auto&&... args) {
+	inline void LogFormatAndMessage(const std::string& fmt, auto&&... args) {
 		std::string msg = std::format(fmt, std::forward<decltype(args)>(args)...);
 		LogAndMessageString(msg);
 	}
-	void LogVFormatAndMessage(const std::string& fmt, std::format_args args) {
+	inline void LogVFormatAndMessage(const std::string& fmt, std::format_args args) {
 		std::string msg = std::vformat(fmt, args);
 		LogAndMessageString(msg);
 	}

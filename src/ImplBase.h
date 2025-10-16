@@ -277,15 +277,21 @@ See details in FileClass_Impl.h
 Generate Implementation Patch for Non-member Functions.
 For use after the function's implementation.
 
+详见示例 Launch_Impl.h
+See details in Launch_Impl.h
+
 */
 #define FUNCTION_IMPLEMENT(Addr, Func) \
-	FunctionImplHelper _ImplHelper_ ## Addr ## Func {Addr, union_cast<void*>(Func)};
+	inline FunctionImplHelper _ImplHelper_ ## Addr ## Func {Addr, union_cast<void*>(Func)};
 
 /*
 
 为尚未实现的函数生成跳转到原函数的补丁，放在函数的声明后面。
 Generate Jump-to-Original Patch for Not-Yet-Implemented Functions.
 For use after the function's declaration.
+
+详见示例 Launch_Impl.h
+See details in Launch_Impl.h
 
 */
 #define FUNCTION_NOT_YET_IMPLEMENTED(Addr) \
