@@ -13,6 +13,6 @@ namespace WinMain_Impl
 	int __stdcall WinMain_Aux(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow);
 	FUNCTION_CALL_AUX(0x7CD8EA, WinMain_Aux)
 
-	int __stdcall WinMain_Impl(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow);
-	PENDING_FUNCTION_IMPLEMENT(0x6BB9A0, WinMain_Impl)
+	int __stdcall WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow);
+	PENDING_FUNCTION_IMPLEMENT(0x6BB9A0, WinMain)
 }

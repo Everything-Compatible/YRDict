@@ -25,4 +25,9 @@ namespace WinMain_Impl
 		}
 		return Result;
 	}
+
+	int __stdcall WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
+	{
+		//To be Implemented
+	}
 }
