@@ -101,8 +101,9 @@ The content of this project is open source and follows the MIT license.
 
 这个项目可以修正WW的原有BUG，但请注明WW原来是怎么写的。
 如果有意愿的话，也可以标注出Ares/Phobos等钩了什么位置以及改变了什么。
-不考虑提供任何的新增或增强逻辑。
-允许也欢迎添加与调试等相关的辅助功能。
+不考虑提供任何的新增玩法或增强的游戏内逻辑。
+允许也欢迎添加与调试等相关的辅助功能和优化补丁。
+
 
 所有源文件和说明文件应统一编码为 UTF8 带BOM格式。
 
@@ -121,8 +122,10 @@ This project can fix the original bugs of WW,
 but please indicate how WW was originally written.
 If you are willing, you can also indicate what positions 
 Ares/Phobos, etc. hooked and what changes they made.
-No new or enhanced logic is considered.
-Adding auxiliary features related to debugging and similar tasks is allowed and encouraged.
+No new or enhanced in-game logic is considered.
+Adding auxiliary features related to debugging and similar tasks 
+as well as simple optimization patches is allowed and encouraged.
+
 
 All source files and documentation files 
 should be uniformly encoded in **UTF-8 with BOM** format.
