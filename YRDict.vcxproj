@@ -89,9 +89,14 @@
   <ItemGroup>
     <ClInclude Include="Patch\Debug.h" />
     <ClInclude Include="Patch\DynamicPatch.h" />
+    <ClInclude Include="src\Debug_Impl.h" />
     <ClInclude Include="src\FileClass_Impl.h" />
     <ClInclude Include="src\ImplBase.h" />
+    <ClInclude Include="src\InitBase.h" />
+    <ClInclude Include="src\Launch_Impl.h" />
+    <ClInclude Include="src\VanillaImpl.h" />
     <ClInclude Include="src\Version.h" />
+    <ClInclude Include="src\WinMain_Impl.h" />
     <ClInclude Include="YRpp\AbstractClass.h" />
     <ClInclude Include="YRpp\AbstractTypeClass.h" />
     <ClInclude Include="YRpp\AircraftClass.h" />
@@ -230,6 +235,7 @@
     <ClInclude Include="YRpp\ControlClass.h" />
     <ClInclude Include="YRpp\Conversions.h" />
     <ClInclude Include="YRpp\ConvertClass.h" />
+    <ClInclude Include="YRpp\CopyProtection.h" />
     <ClInclude Include="YRpp\CRC.h" />
     <ClInclude Include="YRpp\CRT.h" />
     <ClInclude Include="YRpp\Dir.h" />
@@ -364,6 +370,7 @@
     <ClInclude Include="YRpp\Surface.h" />
     <ClInclude Include="YRpp\SwizzleManagerClass.h" />
     <ClInclude Include="YRpp\Syringe.h" />
+    <ClInclude Include="YRpp\SystemData.h" />
     <ClInclude Include="YRpp\TacticalClass.h" />
     <ClInclude Include="YRpp\TActionClass.h" />
     <ClInclude Include="YRpp\TagClass.h" />
@@ -399,6 +406,7 @@
     <ClInclude Include="YRpp\Unsorted.h" />
     <ClInclude Include="YRpp\Vault.h" />
     <ClInclude Include="YRpp\VeinholeMonsterClass.h" />
+    <ClInclude Include="YRpp\VersionClass.h" />
     <ClInclude Include="YRpp\VocClass.h" />
     <ClInclude Include="YRpp\VoxClass.h" />
     <ClInclude Include="YRpp\VoxelAnimClass.h" />
@@ -424,10 +432,13 @@
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="Patch\Debug.cpp" />
     <ClCompile Include="Patch\DynamicPatch.cpp" />
+    <ClCompile Include="src\Debug_Impl.cpp" />
     <ClCompile Include="src\FileClass_Impl.cpp" />
     <ClCompile Include="src\CopyProtection.cpp" />
+    <ClCompile Include="src\Launch_Impl.cpp" />
     <ClCompile Include="src\RawFileClass_Impl.cpp" />
     <ClCompile Include="src\VersionMark.cpp" />
+    <ClCompile Include="src\WinMain_Impl.cpp" />
     <ClCompile Include="YRpp\StaticInits.cpp" />
   </ItemGroup>
   <ItemGroup>
