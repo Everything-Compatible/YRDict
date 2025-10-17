@@ -2,6 +2,7 @@
 #include <Windows.h>
 #include <string>
 #include <format>
+#include <string_view>
 
 namespace Debug
 {
@@ -14,24 +15,27 @@ namespace Debug
 	void LogAndMessageString(const char* pStr);
 	void LogAndMessageString(const std::string& Str);
 
-	inline void LogFormat(const std::string& fmt, auto&&... args) {
-		std::string msg = std::format(fmt, std::forward<decltype(args)>(args)...);
+	template <class... _Types>
+	inline void LogFormat(const std::format_string<_Types...> fmt, _Types&&... args) {
+		std::string msg = std::vformat(fmt.get(), std::make_format_args(args...));
 		LogString(msg);
 	}
-	inline void LogVFormat(const std::string& fmt, std::format_args args) {
+	inline void LogVFormat(std::string_view fmt, std::format_args args) {
 		std::string msg = std::vformat(fmt, args);
 		LogString(msg);
 	}
-	inline void MessageFormat(const std::string& fmt, auto&&... args) {
-		std::string msg = std::format(fmt, std::forward<decltype(args)>(args)...);
+	template <class... _Types>
+	inline void MessageFormat(const std::format_string<_Types...> fmt, _Types&&... args) {
+		std::string msg = std::vformat(fmt.get(), std::make_format_args(args...));
 		MessageString(msg);
 	}
 	inline void MessageVFormat(const std::string& fmt, std::format_args args) {
 		std::string msg = std::vformat(fmt, args);
 		MessageString(msg);
 	}
-	inline void LogFormatAndMessage(const std::string& fmt, auto&&... args) {
-		std::string msg = std::format(fmt, std::forward<decltype(args)>(args)...);
+	template <class... _Types>
+	inline void LogFormatAndMessage(const std::format_string<_Types...> fmt, _Types&&... args) {
+		std::string msg = std::vformat(fmt.get(), std::make_format_args(args...));
 		LogAndMessageString(msg);
 	}
 	inline void LogVFormatAndMessage(const std::string& fmt, std::format_args args) {
