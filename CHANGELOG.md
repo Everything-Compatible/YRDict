@@ -48,6 +48,12 @@ Update records:
 
 - Organized the implementation of CopyProtection.
 
+## InitCheck_Impl
+#### 2025-10-18 IronHammer_Std
+- 整理了GetFreeDiskSpaceKB的实现。
+
+- Organized the implementation of GetFreeDiskSpaceKB.
+
 ## Debug_Impl
 #### 2025-10-17 IronHammer_Std
 - 恢复了调试日志功能。
@@ -57,3 +63,11 @@ Update records:
 - 更新文件操作为CRT的函数。
 
 - Updated file operations to use CRT functions.
+
+## WinMain_Impl
+#### 2025-10-17 IronHammer_Std
+- 替换为了WinMain_Aux以增强日志相关功能。
+- 给出了WinMain的开头一小段的部分实现，并作为部分实现的样例。
+
+- Replaced with WinMain_Aux to enhance logging-related features.
+- Provided a small portion of the implementation at the beginning of WinMain as a sample of partial implementation.
