@@ -29,6 +29,7 @@ namespace WinMain_Impl
 		return Result;
 	}
 
+	
 	int __stdcall WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 	{
 		//Initialize system params
@@ -105,6 +106,28 @@ namespace WinMain_Impl
 			return 0;
 		}
 
+		//Ensure that there is only 1 Instance
+		//including TS/FS/RA2/YR
+		Game::GameInstanceMutex = CreateMutexA(0, FALSE, GameInstanceMutex_UUID);
+		if (GetLastError() == ERROR_ALREADY_EXISTS)
+		{
+			HWND hWnd_FromMutex = FindWindowA(GameInstanceMutex_UUID, NULL);
+			if (hWnd_FromMutex)
+			{
+				SetForegroundWindow(hWnd_FromMutex);
+				ShowWindow(hWnd_FromMutex, SW_RESTORE);
+			}
+			if (Game::GameInstanceMutex)
+			{
+				CloseHandle(Game::GameInstanceMutex);
+				Game::GameInstanceMutex = NULL;
+			}
+			Debug::LogString("TibSun is already running...Bail!\n");
+			// Exit -- Game is already running
+			return 0;                                  
+		}
+		// Ensure that only one game instance is running
+		Debug::LogString("Create AppMutex okay.\n");                    
 
 		//To be Implemented
 	}

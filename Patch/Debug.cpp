@@ -1,12 +1,24 @@
 ﻿#include "Debug.h"
 #include <CRT.h>
 #include <MessageListClass.h>
+#include "../src/VanillaImpl.h"
+#include "../src/Debug_Impl.h"
 
 namespace Debug
 {
 	void Log(const char* pFormat, ...)
 	{
-		JMP_STD(0x4068E0);
+		if constexpr (!UseVanillaImpl_Supplementary)
+		{
+			va_list args;
+			va_start(args, pFormat);
+			Debug_Impl::LogWithVArgs(pFormat, args);
+			va_end(args);
+		}
+		else
+		{
+			JMP_STD(0x4068E0);
+		}
 	}
 	void LogAndMessage(const char* pFormat, ...)
 	{
@@ -20,11 +32,25 @@ namespace Debug
 	}
 	void LogString(const char* pStr)
 	{
-		Log("%s", pStr);
+		if constexpr (!UseVanillaImpl_Supplementary)
+		{
+			Debug_Impl::LogString(pStr);
+		}
+		else
+		{
+			Log("%s", pStr);
+		}
 	}
 	void LogString(const std::string& Str)
 	{
-		Log("%s", Str.c_str());
+		if constexpr (!UseVanillaImpl_Supplementary)
+		{
+			Debug_Impl::LogString(Str.c_str());
+		}
+		else
+		{
+			Log("%s", Str.c_str());
+		}
 	}
 	void MessageString(const char* pStr)
 	{

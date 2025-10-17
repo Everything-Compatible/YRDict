@@ -112,6 +112,15 @@ namespace Debug_Impl
 		}
 	}
 
+	void LogUnflushed(const char* Str)
+	{
+		if constexpr (!UseVanillaImpl_Supplementary)
+		{
+			CRT::fprintf(LogFile, "%s", Str);
+			CRT::fprintf(TempLogFile, "%s", Str);
+		}
+	}
+
 	void __cdecl Log(const char* pFormat, ...)
 	{
 		if constexpr (!UseVanillaImpl_Supplementary)
@@ -123,6 +132,32 @@ namespace Debug_Impl
 			va_start(args, pFormat);
 			LogWithVArgsUnflushed(pFormat, args);
 			va_end(args);
+
+			FlushLogFile();
+		}
+	}
+
+	void LogWithVArgs(const char* pFormat, va_list args)
+	{
+		if constexpr (!UseVanillaImpl_Supplementary)
+		{
+			if (!IsLogFileOpen())
+				OpenLogFile();
+
+			LogWithVArgsUnflushed(pFormat, args);
+
+			FlushLogFile();
+		}
+	}
+
+	void LogString(const char* Str)
+	{
+		if constexpr (!UseVanillaImpl_Supplementary)
+		{
+			if (!IsLogFileOpen())
+				OpenLogFile();
+			
+			LogUnflushed(Str);
 
 			FlushLogFile();
 		}
