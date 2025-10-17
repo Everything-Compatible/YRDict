@@ -67,10 +67,10 @@ namespace CopyProtection_Impl
                 {
                     while (!PeekMessageA(
                         &Msg, 0,
-                        Launcher_HereIAm_MessageID,
-                        Launcher_HereIAm_MessageID,
+                        Launcher_HereIAm_Message,
+                        Launcher_HereIAm_Message,
                         PM_REMOVE) ||
-                        Msg.message != Launcher_HereIAm_MessageID)
+                        Msg.message != Launcher_HereIAm_Message)
                     {
                         Sleep(0);
                         if (timeGetTime() > NextCheckTime)

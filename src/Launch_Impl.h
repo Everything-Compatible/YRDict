@@ -8,8 +8,7 @@ namespace CopyProtection_Impl
 	inline const char* MutexGUID = "48BC11BD-C4D7-466b-8A31-C6ABBAD47B3E";
 	inline const char* NotifySignalGUID = "D6E7FC97-64F9-4d28-B52C-754EDF721C6F";
 	inline const char* Launcher_RegKey = "WChat\\SysID";
-	inline const UINT Launcher_HereIAm_MessageID = 0xBEEFu;
-	inline const UINT Launcher_HereIAm_Message = 48879;
+	inline const UINT Launcher_HereIAm_Message = 0xBEEFu;
 
 	bool IsLauncherRunning();
 	FUNCTION_IMPLEMENT(0x49F5C0, IsLauncherRunning);
