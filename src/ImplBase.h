@@ -132,6 +132,20 @@ struct FunctionImplHelper
 };
 
 /*
+辅助类型，不直接使用
+Helper Class, NO Direct Usage.
+*/
+struct FunctionAuxHelper
+{
+	FunctionAuxHelper() = delete;
+	FunctionAuxHelper(size_t CallAddr, void* AuxFunc)
+	{
+		CodeModifier::InsertNearCall(CallAddr, AuxFunc);
+	}
+	~FunctionAuxHelper() = default;
+};
+
+/*
 辅助宏，不直接使用
 Helper Macro, NO Direct Usage.
 */
@@ -296,3 +310,20 @@ See details in Launch_Impl.h
 */
 #define FUNCTION_NOT_YET_IMPLEMENTED(Addr) \
 	{ JMP_STD((Addr)) }
+
+
+/*
+
+为特定位置的函数调用生成调用替换补丁，放在函数的实现后面。
+用于替换特定位置调用的函数，要求新的函数与原函数有相同的调用约定与参数。
+Generate Auxillary Call Replacement Patch for Specific Call Sites.
+For use after the function's implementation.
+Used to replace function calls at specific locations,
+requiring the new function to have the same calling convention and parameters as the original.
+
+详见示例 WinMain_Impl.h
+See details in WinMain_Impl.h
+
+*/
+#define FUNCTION_CALL_AUX(CallAddr, AuxFunc) \
+	inline FunctionAuxHelper _AuxHelper_ ## CallAddr ## AuxFunc {CallAddr, union_cast<void*>(AuxFunc)};

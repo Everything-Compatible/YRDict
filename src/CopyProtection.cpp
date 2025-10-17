@@ -1,6 +1,6 @@
 ﻿#include "Syringe.h"
 
-DEFINE_HOOK(0x4A80D0, CD_AlwaysFindYR, 6)
+DEFINE_HOOK(0xc, CD_AlwaysFindYR, 6)
 {
 	R->EAX(2);
 	return 0x4A8265;
