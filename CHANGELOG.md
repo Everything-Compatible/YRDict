@@ -41,3 +41,9 @@ Update records:
 
 - Initial organization of RawFileClass_Impl completed.
 - Tested and confirmed to work correctly.
+
+## Debug_Impl
+#### 2025-10-17 IronHammer_Std
+- 恢复了调试日志功能。
+
+- Restored the debug logging functionality.
