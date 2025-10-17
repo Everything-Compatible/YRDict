@@ -47,7 +47,7 @@ Update records:
 - 恢复了调试日志功能。
 
 - Restored the debug logging functionality.
-- #### 2025-10-17 IronHammer_Std
+#### 2025-10-17 IronHammer_Std
 - 更新文件操作为CRT的函数。
 
 - Updated file operations to use CRT functions.

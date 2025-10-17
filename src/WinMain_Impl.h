@@ -12,4 +12,7 @@ namespace WinMain_Impl
 	//Replace the original WinMain call so as to insert our own initialization code
 	int __stdcall WinMain_Aux(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow);
 	FUNCTION_CALL_AUX(0x7CD8EA, WinMain_Aux)
+
+	int __stdcall WinMain_Impl(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow);
+	PENDING_FUNCTION_IMPLEMENT(0x6BB9A0, WinMain_Impl)
 }
