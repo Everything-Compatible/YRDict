@@ -31,4 +31,10 @@ namespace CopyProtection_Impl
 	inline const char* mProtectData_Failed = "EEK!";
 	inline const char* mProtectData_Success = "UIDATA,3DDATA,MAPS";
 	DEFINE_REFERENCE(char*, _mProtectedData, 0x89F75C)
+};
+
+namespace InitCheck_Impl
+{
+	DWORD GetFreeDiskSpaceKB();
+	FUNCTION_IMPLEMENT(0x48DD50, GetFreeDiskSpaceKB);
 }
