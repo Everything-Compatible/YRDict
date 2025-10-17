@@ -415,7 +415,6 @@
     <ClInclude Include="YRpp\WaveClass.h" />
     <ClInclude Include="YRpp\WaypointPathClass.h" />
     <ClInclude Include="YRpp\WeaponTypeClass.h" />
-    <ClInclude Include="YRpp\WinAPI.h" />
     <ClInclude Include="YRpp\WinsockInterfaceClass.h" />
     <ClInclude Include="YRpp\WOLAPIInterfaces.h" />
     <ClInclude Include="YRpp\Wstring.h" />
