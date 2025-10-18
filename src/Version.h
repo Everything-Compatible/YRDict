@@ -21,7 +21,7 @@ COPIED FROM PHOBOS
 #define VERSION_MINOR 0
 
 // Indicates minor changes, like new implementation and insights.
-#define VERSION_REVISION 0
+#define VERSION_REVISION 1
 
 // Indicates very minor changes and insignificant additions.
 #define VERSION_PATCH 0
