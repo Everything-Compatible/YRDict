@@ -42,8 +42,32 @@ Update records:
 - Initial organization of RawFileClass_Impl completed.
 - Tested and confirmed to work correctly.
 
+## Launch_Impl
+#### 2025-10-16 IronHammer_Std
+- 整理了CopyProtection部分的实现。
+
+- Organized the implementation of CopyProtection.
+
+## InitCheck_Impl
+#### 2025-10-18 IronHammer_Std
+- 整理了GetFreeDiskSpaceKB的实现。
+
+- Organized the implementation of GetFreeDiskSpaceKB.
+
 ## Debug_Impl
 #### 2025-10-17 IronHammer_Std
 - 恢复了调试日志功能。
 
 - Restored the debug logging functionality.
+#### 2025-10-17 IronHammer_Std
+- 更新文件操作为CRT的函数。
+
+- Updated file operations to use CRT functions.
+
+## WinMain_Impl
+#### 2025-10-17 IronHammer_Std
+- 替换为了WinMain_Aux以增强日志相关功能。
+- 给出了WinMain的开头一小段的部分实现，并作为部分实现的样例。
+
+- Replaced with WinMain_Aux to enhance logging-related features.
+- Provided a small portion of the implementation at the beginning of WinMain as a sample of partial implementation.

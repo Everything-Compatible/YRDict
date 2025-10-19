@@ -181,6 +181,13 @@ See details in FileClass_Impl.h
 #define DEFINE_IMPLEMENT \
 	inline static void Implement()
 
+/*
+
+什么也不会干，标记此处在完成实现之后应该换成IMPLEMENT
+Does nothing; marks this location to be replaced with IMPLEMENT after the implementation is complete.
+
+*/
+#define PENDING_IMPLEMENT(Addr, Method) 
 
 /*
 
@@ -287,7 +294,7 @@ See details in FileClass_Impl.h
 
 /*
 
-为普通函数生成实现补丁，放在函数的实现后面。
+为非成员函数生成实现补丁，放在函数的实现后面。
 Generate Implementation Patch for Non-member Functions.
 For use after the function's implementation.
 
@@ -300,8 +307,16 @@ See details in Launch_Impl.h
 
 /*
 
-为尚未实现的函数生成跳转到原函数的补丁，放在函数的声明后面。
-Generate Jump-to-Original Patch for Not-Yet-Implemented Functions.
+什么也不会干，标记此处在完成实现之后应该换成FUNCTION_IMPLEMENT
+Does nothing; marks this location to be replaced with FUNCTION_IMPLEMENT after the implementation is complete.
+
+*/
+#define PENDING_FUNCTION_IMPLEMENT(Addr, Func) 
+
+/*
+
+为尚未实现的非成员函数生成跳转到原函数的补丁，放在函数的声明后面。
+Generate Jump-to-Original Patch for Not-Yet-Implemented Non-member Functions.
 For use after the function's declaration.
 
 详见示例 Launch_Impl.h

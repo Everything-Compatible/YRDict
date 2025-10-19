@@ -1,7 +1,7 @@
 ﻿#include "Launch_Impl.h"
 #include "Windows.h"
 #include <VersionClass.h>
-
+#include <Unsorted.h>
 
 namespace CopyProtection_Impl
 {
@@ -67,10 +67,10 @@ namespace CopyProtection_Impl
                 {
                     while (!PeekMessageA(
                         &Msg, 0,
-                        Launcher_HereIAm_MessageID,
-                        Launcher_HereIAm_MessageID,
+                        Launcher_HereIAm_Message,
+                        Launcher_HereIAm_Message,
                         PM_REMOVE) ||
-                        Msg.message != Launcher_HereIAm_MessageID)
+                        Msg.message != Launcher_HereIAm_Message)
                     {
                         Sleep(0);
                         if (timeGetTime() > NextCheckTime)
@@ -187,3 +187,55 @@ namespace CopyProtection_Impl
     }
 }
 
+
+namespace InitCheck_Impl
+{
+    DWORD GetFreeDiskSpaceKB()
+    {
+        HMODULE hKernal32; 
+        BOOL(__stdcall * GetDiskFreeSpaceExA)(LPCSTR, PULARGE_INTEGER, PULARGE_INTEGER, PULARGE_INTEGER); 
+        unsigned int FreeDiskSpaceKB; 
+        DWORD SectorsPerCluster; 
+        DWORD BytesPerSector; 
+        DWORD NumberOfFreeClusters; 
+        DWORD TotalNumberOfClusters;
+        ULARGE_INTEGER FreeBytesAvailableToCaller; 
+        ULARGE_INTEGER TotalNumberOfFreeBytes; 
+        ULARGE_INTEGER TotalNumberOfBytes; 
+
+        Debug::LogString("Checking available disk space\n");
+        hKernal32 = GetModuleHandleA("KERNEL32.DLL");
+        if (hKernal32)
+        {
+            GetDiskFreeSpaceExA = reinterpret_cast<decltype(GetDiskFreeSpaceExA)>
+                (GetProcAddress(hKernal32, "GetDiskFreeSpaceExA"));
+            if (GetDiskFreeSpaceExA)
+            {
+                Debug::LogString("Using GetDiskFreeSpaceEx\n");
+                if (GetDiskFreeSpaceExA(NULL, &FreeBytesAvailableToCaller, &TotalNumberOfBytes, &TotalNumberOfFreeBytes))
+                {
+                    FreeDiskSpaceKB = Game::F2I64((FreeBytesAvailableToCaller.HighPart * 4294967296.0 + FreeBytesAvailableToCaller.LowPart) * 0.0009765625);
+                    Debug::Log("Free disk space is %d Mb\n", FreeDiskSpaceKB >> 10);
+                    return FreeDiskSpaceKB;
+                }
+
+                //why there is 0 to %s ?!
+                Debug::Log("GetDiskFreeSpaceEx failed with error code %d - %s\n", GetLastError(), 0);
+            }
+            else
+            {
+                //why there is 0 to %s ?!
+                Debug::Log("GetProcAddress failed with error code %d - %s\n", GetLastError(), 0);
+            }
+        }
+        else
+        {
+            Debug::LogString("Failed to get module handle for KERNEL32.DLL\n");
+        }
+        if (!GetDiskFreeSpaceA(0, &SectorsPerCluster, &BytesPerSector, &NumberOfFreeClusters, &TotalNumberOfClusters))
+            return 0;
+        FreeDiskSpaceKB = NumberOfFreeClusters * ((BytesPerSector * SectorsPerCluster) >> 10);
+        Debug::Log("Free disk space is %d Mb\n", FreeDiskSpaceKB >> 10);
+        return FreeDiskSpaceKB;
+    }
+}

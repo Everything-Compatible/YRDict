@@ -37,6 +37,12 @@ YRDict 以函数为单位进行整理。
 对单个类的实现，在YRpp当中记录下这个类的Type和具体内容，
 同时，在实现当中以一个Type_Impl来容纳实现。
 
+具体的书写方式，可以参照示例代码和src/ImplBase.h等。
+函数的实现可以是完整的C++代码，也可以是IDA产出的伪代码。
+无论如何，请确保最终的代码能够成功编译通过。
+每个提交的函数按照ImplBase.h的约定标示是否可用。
+例如(PENDING)_IMPLEMENT/(PENDING)_FUNCTION_IMPLEMENT等。
+如果有任何不清楚的地方，欢迎提出Issue进行讨论。
 
 YRDict is organized by functions. For each function, 
 its interface and memory address are documented in projects like YRpp.
@@ -66,6 +72,14 @@ For the implementation of a single class,
 record the Type and specific content of this class in YRpp,
 and at the same time, use a Type_Impl to contain the implementation.
 
+Regarding the specific format, please see the example source files and src/ImplBase.h.
+Implementations can be complete C++ code or IDA-generated pseudocode.
+Anyway, make sure the final code can be built successfully.
+Mark each function's status using the marker symbols defined in ImplBase.h
+e.g., using (PENDING)_IMPLEMENT/(PENDING)_FUNCTION_IMPLEMENT.
+For any questions, we welcome you to start a discussion by opening a new Issue.
+
+
 ## 使用/USAGE
 
 把这个项目编译成DLL，或下载Release当中的DLL。
@@ -78,6 +92,7 @@ and at the same time, use a Type_Impl to contain the implementation.
 
 当然，也可以仅仅拿来参考，或者用来作为自己扩展的基础。
 这个项目的内容是开源的，遵循MIT许可证。
+欢迎基于YRDict开发引擎扩展。
 
 
 Compile this project into a DLL, or download the DLL from the Release page.
@@ -92,6 +107,7 @@ Loading it alongside other extensions may lead to unpredictable behavior.
 Naturally, you are also free to use this project 
 solely for reference or as a foundation for your own extensions.
 The content of this project is open source and follows the MIT license.
+You are welcome to develop game engine extensions based on YRDict.
 
 ## 注意/NOTE
 
@@ -101,8 +117,9 @@ The content of this project is open source and follows the MIT license.
 
 这个项目可以修正WW的原有BUG，但请注明WW原来是怎么写的。
 如果有意愿的话，也可以标注出Ares/Phobos等钩了什么位置以及改变了什么。
-不考虑提供任何的新增或增强逻辑。
-允许也欢迎添加与调试等相关的辅助功能。
+不考虑提供任何的新增玩法或增强的游戏内逻辑。
+允许也欢迎添加与调试等相关的辅助功能和优化补丁。
+
 
 所有源文件和说明文件应统一编码为 UTF8 带BOM格式。
 
@@ -110,6 +127,7 @@ The content of this project is open source and follows the MIT license.
 可以申请加入，并在dev分支上直接开发与提交；
 也可以fork本项目，并在自己的分支当中添加内容。
 以上两种方式都应通过Pull Request的方式合并到main分支。
+注意只会合并通过所有自动检查的PR（如nightly build & changelog check)
 
 Please note that this project does not aim to fully reverse engineer YR. 
 Instead, it focuses on documenting critical functions and implementations.
@@ -121,8 +139,10 @@ This project can fix the original bugs of WW,
 but please indicate how WW was originally written.
 If you are willing, you can also indicate what positions 
 Ares/Phobos, etc. hooked and what changes they made.
-No new or enhanced logic is considered.
-Adding auxiliary features related to debugging and similar tasks is allowed and encouraged.
+No new or enhanced in-game logic is considered.
+Adding auxiliary features related to debugging and similar tasks 
+as well as simple optimization patches is allowed and encouraged.
+
 
 All source files and documentation files 
 should be uniformly encoded in **UTF-8 with BOM** format.
@@ -131,6 +151,8 @@ Everyone, please avoid committing directly to the main branch.
 You can apply to join and develop and commit directly on the dev branch;
 or you can fork this project and add content in your own branch.
 Both methods should merge into the main branch via Pull Request.
+Note that only PRs that pass all automated checks
+(e.g., nightly build & changelog check) will be merged.
 
 ## 结语/CONCLUSION
 

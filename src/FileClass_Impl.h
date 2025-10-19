@@ -84,7 +84,7 @@ public:
 	void Close();
 	DWORD GetFileTime();
 	bool SetFileTime(DWORD FileTime);
-	void CDCheck(DWORD ErrorCode, bool bUnk, const char* FileName) {}
+	void CDCheck(DWORD ErrorCode, bool canRetry, const char* FileName) {}
 
 	//Non-virtual Function Implements
 	void Bias(int offset = 0, int length = -1);

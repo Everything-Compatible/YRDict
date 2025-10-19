@@ -2,6 +2,7 @@
 #include "VanillaImpl.h"
 #include <Debug.h>
 #include <Unsorted.h>
+#include <CRT.h>
 
 namespace Debug_Impl
 {
@@ -53,7 +54,7 @@ namespace Debug_Impl
 			MakeLogFile();
 			CloseLogFile(nullptr);
 
-			LogFile = _wfsopen(LogFilePath.c_str(), L"w", _SH_DENYWR);
+			LogFile = CRT::_fsopen(LogFilePath.string().c_str(), "w", _SH_DENYWR);
 			if (!LogFile) {
 				wchar_t msg[100] = L"\0";
 				LogFile = nullptr;
@@ -61,7 +62,7 @@ namespace Debug_Impl
 				MessageBoxW(Game::hWnd, LogFilePath.c_str(), msg, MB_OK | MB_ICONEXCLAMATION);
 				ExitProcess(1);
 			}
-			TempLogFile = _wfsopen(TempLogFilePath.c_str(), L"w", _SH_DENYWR);
+			TempLogFile = CRT::_fsopen(TempLogFilePath.string().c_str(), "w", _SH_DENYWR);
 			if (!TempLogFile) {
 				wchar_t msg[100] = L"\0";
 				TempLogFile = nullptr;
@@ -82,8 +83,8 @@ namespace Debug_Impl
 					Debug::LogString(CloseState);
 				else
 					Debug::LogString("YRDict : Closing Log File...\n");
-				fclose(LogFile);
-				fclose(TempLogFile);
+				CRT::fclose(LogFile);
+				CRT::fclose(TempLogFile);
 				LogFile = nullptr;
 				TempLogFile = nullptr;
 			}
@@ -96,8 +97,8 @@ namespace Debug_Impl
 		{
 			if (IsLogFileOpen())
 			{
-				fflush(LogFile);
-				fflush(TempLogFile);
+				CRT::fflush(LogFile);
+				CRT::fflush(TempLogFile);
 			}
 		}
 	}
@@ -106,8 +107,17 @@ namespace Debug_Impl
 	{
 		if constexpr (!UseVanillaImpl_Supplementary)
 		{
-			vfprintf(LogFile, pFormat, args);
-			vfprintf(TempLogFile, pFormat, args);
+			CRT::vfprintf(LogFile, pFormat, args);
+			CRT::vfprintf(TempLogFile, pFormat, args);
+		}
+	}
+
+	void LogUnflushed(const char* Str)
+	{
+		if constexpr (!UseVanillaImpl_Supplementary)
+		{
+			CRT::fprintf(LogFile, "%s", Str);
+			CRT::fprintf(TempLogFile, "%s", Str);
 		}
 	}
 
@@ -122,6 +132,32 @@ namespace Debug_Impl
 			va_start(args, pFormat);
 			LogWithVArgsUnflushed(pFormat, args);
 			va_end(args);
+
+			FlushLogFile();
+		}
+	}
+
+	void LogWithVArgs(const char* pFormat, va_list args)
+	{
+		if constexpr (!UseVanillaImpl_Supplementary)
+		{
+			if (!IsLogFileOpen())
+				OpenLogFile();
+
+			LogWithVArgsUnflushed(pFormat, args);
+
+			FlushLogFile();
+		}
+	}
+
+	void LogString(const char* Str)
+	{
+		if constexpr (!UseVanillaImpl_Supplementary)
+		{
+			if (!IsLogFileOpen())
+				OpenLogFile();
+			
+			LogUnflushed(Str);
 
 			FlushLogFile();
 		}
